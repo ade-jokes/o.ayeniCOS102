@@ -16,7 +16,7 @@ def clear_fields(all_entries):
         entry.delete(0, tk.END)
     messagebox.showinfo("Cleared", "All fields have been cleared.")
 
-def create_dropdown_and_entry(parent, var, label_text, y_position):
+def create_dropdown_and_entry(parent, var, label_text, y_position, item_prices):
     label = tk.Label(parent, text=label_text)
     label.place(x=20, y=y_position)
 
@@ -41,17 +41,17 @@ def function(item_vars, item_prices):
 
     # Create dropdown menus and entry fields for quantities
     all_entries = [
-        create_dropdown_and_entry(item_frame, rice_var, "Rice/Pasta", 150),
-        create_dropdown_and_entry(item_frame, side_dish_var, "Side Dish", 230),
-        create_dropdown_and_entry(item_frame, soup_var, "Soup/Swallow", 310),
-        create_dropdown_and_entry(item_frame, swallow_var, "Swallow", 390),
-        create_dropdown_and_entry(item_frame, protein_var, "Protein", 470),
-        create_dropdown_and_entry(item_frame, beverage_var, "Beverage", 550)
+        create_dropdown_and_entry(item_frame, rice_var, "Rice/Pasta", 150, item_prices),
+        create_dropdown_and_entry(item_frame, side_dish_var, "Side Dish", 230, item_prices),
+        create_dropdown_and_entry(item_frame, soup_var, "Soup/Swallow", 310, item_prices),
+        create_dropdown_and_entry(item_frame, swallow_var, "Swallow", 390, item_prices),
+        create_dropdown_and_entry(item_frame, protein_var, "Protein", 470, item_prices),
+        create_dropdown_and_entry(item_frame, beverage_var, "Beverage", 550, item_prices)
     ]
 
     # Create a button to calculate the total bill
     calculate_button = tk.Button(
-        order_window, text="Calculate Bill", command=lambda: calculate_bill(all_entries, item_vars, item_prices), state=tk.DISABLED)
+        order_window, text="Calculate Bill", command=lambda: calculate_bill(all_entries, item_vars, item_prices))
     calculate_button.pack(pady=20)
 
     # Create a button to clear the input fields
@@ -157,7 +157,7 @@ canvas.create_text(450,330, text="BEVERAGE", font = "times 20 italic")
 
 # Add the Beverages items
 canvas.create_text(450,370, text="Water   N200", font = "Arial 12 italic")
-canvas.create_text(450,410, text="Glass Drink(35cl)   N150", font = "Arial 12 italic")
+canvas.create_text(450,410, text="Glass Drink(35cl)   N150", font = "Arialf 12 italic")
 canvas.create_text(450, 450, text="PET Drinks(35cl)   N150", font=("Arial", 12, "italic"))
 canvas.create_text(450, 490, text="Glass/Canned Malt   N500", font=("Arial", 12, "italic"))
 canvas.create_text(450, 530, text="Fresh Yo   N600", font=("Arial", 12, "italic"))
